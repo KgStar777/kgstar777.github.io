@@ -28,10 +28,10 @@ class Start2 extends React.Component {
     }
 
     getMovies() {
-        console.log("GMV: ", this.state)
+        // console.log("GMV: ", this.state)
         const movie = this.state.searchField
         const baseUrl = `https://imdb-api.com/en/API/Search/${apiKey}/${movie}`
-        console.log('getMovies GO: ', baseUrl);
+        // console.log('getMovies GO: ', baseUrl);
         // console.log('this.state.searchField: ', this.state.searchField, movie)
         axios.get(`${baseUrl}`)
             .then(resp => {
@@ -39,18 +39,23 @@ class Start2 extends React.Component {
             })
     }
 
+
     render(props) {
-        console.log("render: ", this.state)
         return (
             <div className={classes.videoBg}>
 
-                <iframe src="https://www.youtube.com/embed/gA0nQyDZR4A?autoplay=1&fs=0&loop=1"
-                        width="720" height="540"
-                        color="white"
-                        frameBorder="0"
-                        allow="autoplay"
-                        autoPlay={true}
-                        allowfullscreen="true" />
+                <iframe id="ytplayer" type="text/html" width="720" height="405"
+                        src="https://www.youtube.com/embed/gA0nQyDZR4A?autoplay=1&controls=0&disablekb=1&enablejsapi=1&fs=0&loop=1&modestbranding=1&color=white&iv_load_policy=3"
+                        frameBorder="0" allowFullScreen />
+
+                {/*<iframe src="https://www.youtube.com/embed/gA0nQyDZR4A?autoplay=1&fs=0&loop=1"*/}
+                {/*        width="720" height="540"*/}
+                {/*        color="white"*/}
+                {/*        frameBorder="0"*/}
+                {/*        allow="autoplay"*/}
+                {/*        autoPlay={true}*/}
+                {/*        allowfullscreen="true"*/}
+                {/*/>*/}
 
                 <div className={classes.effects}/>
                 <div className={classes.videoContent}>

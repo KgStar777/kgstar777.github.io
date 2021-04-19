@@ -10,7 +10,6 @@ import Start2 from "../Start2";
 import Trailer from "../Trailer/Trailer";
 
 const Film = ({match, location}) => {
-    // console.log('match, location: ', match, location)
     const [films, setFilms] = useState([])
     const [trailer, setTrailer] = useState([])
     const [trailerBool, setTrailerBool] = useState(false)
@@ -20,16 +19,12 @@ const Film = ({match, location}) => {
     const [inp, setInp] = useState('')
 
 
-    console.log('COMPONENT RENDER')
-    console.log('match: ', match.params)
     useEffect(() => {
-        console.log('USE EFFECT RENDER')
         axios.get(`https://imdb-api.com/en/API/Title/${apiKey}/${filmId}`)
             .then(resp => {
                 setFilms(resp.data)
-                console.log("films", films)
             })
-        // render();
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     }, match.params.filmId)
 
     const onKeyDown = e => setInp(e.target.value)
@@ -37,7 +32,6 @@ const Film = ({match, location}) => {
     const getTrailer = () => {
         axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${apiKey}/${filmId}`)
             .then(response => {
-                console.log(response)
                 setTrailer(response.data);
                 setTrailerBool(true);
             })
